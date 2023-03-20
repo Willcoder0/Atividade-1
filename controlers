@@ -1,0 +1,44 @@
+const  filmesService  =  require ( '../services/service.filme' ) ;
+
+const  getFilmesController  =  ( req ,  res )  =>  {
+    const  filmes  =  filmesService . getFilmesService ( ) ;
+    res . enviar ( filmes )
+}
+
+const  getFilmesByIdController  =  ( req ,  res )  =>  {
+    const  id  =  req . parâmetros . identificação ;
+    const  filme  =  filmesService . getFilmesByIdService ( id )
+    res . enviar ( filme )
+} ;
+
+const  createFilmeController  =  ( req , res )  =>  {
+    const  novoFilme  =  req . corpo ;
+    FilmesServiço . createFilmeService ( novoFilme ) ;
+    res . send ( { message : `Filme ${ newFilme . Filme } , do gênero ${ newFilme . Gênero } , cadastrado com sucesso!` } )
+} ;
+
+const  updateFilmeController  =  ( req ,  res )  =>  {
+    const  idParam  =  req . parâmetros . identificação ;
+    const  filmeEdit  =  req . corpo ;
+    const  edit  =  filmesService . updateFilmeService ( idParam ,  filmeEdit ) ;
+    se ( editar ) {
+        res . send ( { message : 'O filme foi editado com sucesso!' } )
+    }
+    outra coisa {
+        res . send ( { message : 'Não encontramos o filme com esse Id!' } )
+    }
+}
+
+const  deleteFilmeController  =  ( req ,  res )  =>  {
+  const   idParam  =  req . parâmetros . identificação ;
+    FilmesServiço . deleteFilmeService ( idParam )
+    res . send ( { message : 'O filme foi excluído com sucesso!' } )
+}
+módulo . exporta  =  {
+    getFilmesController ,
+    getFilmesByIdController ,
+    criarFilmeController ,
+    atualizarFilmeController ,
+    deleteFilmeController
+
+}
