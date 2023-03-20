@@ -1,0 +1,43 @@
+const  expresso  =  requer ( 'expresso' ) ;
+ aplicativo  const =  expresso ( ) ;
+ porta  const =  3000 ;
+app . use ( express . json ( ) ) ;
+const  cors  =  requerem ( 'cors' )  ;
+app . use ( cors ( ) ) ;
+
+const  filmesRouter  =  require ( './routes/routes.filme' ) ;
+app . use ( '/filmes' ,  filmesRouter )
+
+app . listen ( port ,  ( )  =>  { console . log ( `A fera está trabalhando na porta ${ port } ` ) ; } ) ;
+#! /bin/sh
+basedir= $( dirname " $( echo " $0 "  | sed -e ' s,\\,/,g ' ) " )
+
+caso  ` uname `  em
+    * CYGWIN * | * MINW * | * MSYS * ) basedir= ` cygpath -w " $ basedir " ` ;;
+esac
+
+if [ -x  " $basedir /node " ] ;  então
+  " $basedir /node "   " $basedir /../is-ci/bin.js "  " $@ "
+  ret = $?
+outro 
+  node   " $basedir /../is-ci/bin.js "  " $@ "
+  ret = $?
+fi
+sair  $ret
+@ ECO  desligado
+SETLOCAL
+CHAMADA : find_dp0
+
+SE  EXISTIR  " %dp0% \node.exe " (
+  SET  " _prog = %dp0% \node.exe "
+) OUTRO (
+  SET  " _prog = nó "
+  SET  PATHEXT = %PATHEXT: ;.JS; = ; %
+)
+
+" %_prog% "   " %dp0% \..\is-ci\bin.js "  %*
+ENDLOCAL
+SAIR /b %errorlevel%
+: find_dp0
+SET  dp0 = %~dp0
+SAIR /b
